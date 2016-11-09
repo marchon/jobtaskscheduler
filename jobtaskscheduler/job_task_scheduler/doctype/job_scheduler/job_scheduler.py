@@ -38,7 +38,7 @@ class JobScheduler(Document):
         elif self.run == "Cron Style":
             check_cron(str(self.cron_style))
 
-        if self.active:
+        if self.enabled:
             if self.run == "Cron Style":
                 cron = str(self.cron_style)
             else:

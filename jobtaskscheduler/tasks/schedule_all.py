@@ -29,7 +29,7 @@ def get_all_tasks_site(site):
         frappe.init(site=site)
         frappe.connect()
         tasks = frappe.get_all("Job Scheduler",
-                               filters={"active": "1"},
+                               filters={"enabled": "1"},
                                fields=["name", "job_id", "method", "run", "minute", "hour", "day_of_week", "day_of_month", "cron_style", "queue"])
 
         for task in tasks:
