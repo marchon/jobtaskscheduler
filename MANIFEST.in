@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include jobtaskscheduler *.css
+recursive-include jobtaskscheduler *.csv
+recursive-include jobtaskscheduler *.html
+recursive-include jobtaskscheduler *.ico
+recursive-include jobtaskscheduler *.js
+recursive-include jobtaskscheduler *.json
+recursive-include jobtaskscheduler *.md
+recursive-include jobtaskscheduler *.png
+recursive-include jobtaskscheduler *.py
+recursive-include jobtaskscheduler *.svg
+recursive-include jobtaskscheduler *.txt
+recursive-exclude jobtaskscheduler *.pyc
