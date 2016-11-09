@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<!-- Built on Frappe. https://frappe.io/ -->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Job Scheduler</title>
+	<meta name="generator" content="frappe">
+    <link type="text/css" rel="stylesheet" href="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/css/hljs.css">
+    <link type="text/css" rel="stylesheet" href="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/css/octicons/octicons.css">
+    <link type="text/css" rel="stylesheet" href="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/css/docs.css">
+
+    
+	<link rel="shortcut icon"
+		href="/assets/img/favicon.ico"
+		type="image/x-icon">
+	<link rel="icon"
+		href="/assets/img/favicon.ico"
+		type="image/x-icon">
+    
+
+		</head>
+<body data-path="current/models/job_task_scheduler/job_scheduler">
+	<div class="main-section">
+		<div>
+				<header>
+	<nav class="navbar navbar-default navbar-main" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand ellipsis"
+					 href="https://giovanni-codrotech.github.io/jobtaskscheduler//">
+					<span>Job Task Scheduler</span>
+				</a>
+				<div class="dropdown">
+					<button class="btn btn-default navbar-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<i class="octicon octicon-three-bars"></i>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-right">
+<li data-label='<i class="octicon octicon-search"></i>' >
+	<a href="/#"
+		
+		>
+	<i class="octicon octicon-search"></i></a></li><li data-label='User Guide' >
+	<a href="https://giovanni-codrotech.github.io/jobtaskscheduler/user"
+		
+		>
+	User Guide</a></li><li data-label='Developer Docs' >
+	<a href="https://giovanni-codrotech.github.io/jobtaskscheduler/current"
+		
+		>
+	Developer Docs</a></li>
+
+<li class="divider"></li>
+<!-- post login tools -->
+
+</ul>
+				</div>
+			</div>
+			<div class="hidden-xs">
+				
+				<ul class="nav navbar-nav navbar-left">
+</ul>
+<ul class="nav navbar-nav navbar-right"><li data-label='<i class="octicon octicon-search"></i>' >
+	<a href="/#"
+		
+		>
+	<i class="octicon octicon-search"></i></a></li><li data-label='User Guide' >
+	<a href="https://giovanni-codrotech.github.io/jobtaskscheduler/user"
+		
+		>
+	User Guide</a></li><li data-label='Developer Docs' >
+	<a href="https://giovanni-codrotech.github.io/jobtaskscheduler/current"
+		
+		>
+	Developer Docs</a></li>
+	
+	<!-- post login tools -->
+
+</ul>
+				
+			</div>
+		</div>
+	</nav>
+</header><div class="hero-and-content">
+                <div data-html-block="hero"></div>
+                <div class="container" data-html-block="content">
+                
+<div class="page-container" id="page-current/models/job_task_scheduler/job_scheduler" data-path="{{ pathname }}"
+	>
+			<div class="row ">
+				
+				<div class=" page-content col-sm-12 ">
+					<div class="page-content-wrapper">
+						<div class="row page-head">
+							<div class='col-sm-12'>
+								
+								<div class="page-breadcrumbs">
+									
+									
+<ul class="breadcrumb">
+	<li>
+		<span class="icon icon-angle-left"></span>
+		<a href="https://giovanni-codrotech.github.io/jobtaskscheduler//current/models/job_task_scheduler">
+		Module job_task_scheduler</a>
+	</li>
+	
+</ul>
+
+									
+								</div>
+								
+							</div>
+							<div class="col-sm-8 col-xs-6">
+								<h1>Job Scheduler</h1>
+							</div>
+							<div class="col-sm-4 col-xs-6">
+								
+
+								
+							</div>
+						</div>
+					</div>
+					<div class="page_content">
+<!-- title: Job Scheduler -->
+
+
+
+
+
+<div class="dev-header">
+
+<a class="btn btn-default btn-sm" disabled style="margin-bottom: 10px;">
+	Version 0.0.1</a>
+
+
+	<a class="btn btn-default btn-sm" href="https://github.com/giovanni-codrotech/jobtaskscheduler/tree/develop/jobtaskscheduler/job_task_scheduler/doctype/job_scheduler"
+		target="_blank" style="margin-left: 10px; margin-bottom: 10px;"><i class="octicon octicon-mark-github"></i> Source</a>
+
+</div>
+
+
+
+
+
+    <p><b>Table Name:</b> <code>tabJob Scheduler</code></p>
+
+
+
+
+<h3>Fields</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 5%">Sr</th>
+            <th style="width: 25%">Fieldname</th>
+            <th style="width: 20%">Type</th>
+            <th style="width: 25%">Label</th>
+            <th style="width: 25%">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr >
+            <td>1</td>
+            <td class="danger" title="Mandatory"><code>title</code></td>
+            <td >
+                Data</td>
+            <td >
+                Title
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>2</td>
+            <td ><code>active</code></td>
+            <td >
+                Check</td>
+            <td >
+                Active
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>3</td>
+            <td ><code>cb</code></td>
+            <td class="info">
+                Column Break</td>
+            <td >
+                
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>4</td>
+            <td ><code>job_id</code></td>
+            <td >
+                Data</td>
+            <td >
+                Job ID
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr class="info">
+            <td>5</td>
+            <td ><code>sb1</code></td>
+            <td >
+                Section Break</td>
+            <td >
+                Details
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>6</td>
+            <td ><code>method</code></td>
+            <td >
+                Data</td>
+            <td >
+                Method
+                <p class="text-muted small">
+                    path.to.function</p>
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>7</td>
+            <td ><code>queue</code></td>
+            <td >
+                Select</td>
+            <td >
+                Queue
+                
+            </td>
+            <td>
+                <pre>default
+short
+long</pre>
+            </td>
+        </tr>
+        
+        <tr >
+            <td>8</td>
+            <td ><code>cb2</code></td>
+            <td class="info">
+                Column Break</td>
+            <td >
+                
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>9</td>
+            <td ><code>run</code></td>
+            <td >
+                Select</td>
+            <td >
+                Run
+                
+            </td>
+            <td>
+                <pre>Hourly
+Daily
+Weekly
+Monthly
+Yearly
+Cron Style</pre>
+            </td>
+        </tr>
+        
+        <tr >
+            <td>10</td>
+            <td ><code>cron_style</code></td>
+            <td >
+                Data</td>
+            <td >
+                Cron Style
+                <p class="text-muted small">
+                    Use the UNIX crontab format "minute hour day-of-month month day-of-week". For example "0 22 * * 1-5". Hour must be at UTC time.</p>
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>11</td>
+            <td ><code>day_of_week</code></td>
+            <td >
+                Select</td>
+            <td >
+                Day of week
+                
+            </td>
+            <td>
+                <pre>MON
+TUE
+WED
+THU
+FRI
+SAT
+SUN</pre>
+            </td>
+        </tr>
+        
+        <tr >
+            <td>12</td>
+            <td ><code>day_of_month</code></td>
+            <td >
+                Select</td>
+            <td >
+                Day of month
+                
+            </td>
+            <td>
+                <pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+            </td>
+        </tr>
+        
+        <tr >
+            <td>13</td>
+            <td ><code>month</code></td>
+            <td >
+                Select</td>
+            <td >
+                Month
+                
+            </td>
+            <td>
+                <pre>JAN
+FEB
+MAR
+APR
+MAY
+JUN
+JUL
+AUG
+SEP
+OCT
+NOV
+DEC</pre>
+            </td>
+        </tr>
+        
+        <tr >
+            <td>14</td>
+            <td ><code>hour</code></td>
+            <td >
+                Data</td>
+            <td >
+                Hour
+                
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr >
+            <td>15</td>
+            <td ><code>minute</code></td>
+            <td >
+                Data</td>
+            <td >
+                Minute
+                
+            </td>
+            <td></td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+    <hr>
+    <h3>Controller</h3>
+    <h4>jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler</h4>
+
+    
+
+
+
+	
+        
+	<h3 style="font-weight: normal;">Class <b>JobScheduler</b></h3>
+    
+    <p style="padding-left: 30px;"><i>Inherits from frappe.model.document.Document</i></h4>
+    
+    <div class="docs-attr-desc"><p></p>
+</div>
+    <div style="padding-left: 30px;">
+        
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="on_trash" href="#on_trash" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		<b>on_trash</b>
+        <i class="text-muted">(self)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+        
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="validate" href="#validate" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		<b>validate</b>
+        <i class="text-muted">(self)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+        
+    </div>
+    <hr>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.cancel_job" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.cancel_job" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>cancel_job</b>
+        <i class="text-muted">(conn, job_id)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_cron" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_cron" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>check_cron</b>
+        <i class="text-muted">(cron)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_day_of_month" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_day_of_month" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>check_day_of_month</b>
+        <i class="text-muted">(day, month)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_hours" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_hours" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>check_hours</b>
+        <i class="text-muted">(hour)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_minutes" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.check_minutes" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>check_minutes</b>
+        <i class="text-muted">(minute)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.get_cron_string" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.get_cron_string" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>get_cron_string</b>
+        <i class="text-muted">(task)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.get_utc_time_diff" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.get_utc_time_diff" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>get_utc_time_diff</b>
+        <i class="text-muted">()</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.set_schedule" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.set_schedule" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>set_schedule</b>
+        <i class="text-muted">(conn, task, cron_string)</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+	
+        
+    
+    
+	<p class="docs-attr-name">
+        <a name="jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.test_job_method" href="#jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.test_job_method" class="text-muted small">
+            <i class="icon-link small" style="color: #ccc;"></i></a>
+		jobtaskscheduler.job_task_scheduler.doctype.job_scheduler.job_scheduler.<b>test_job_method</b>
+        <i class="text-muted">()</i>
+    </p>
+	<div class="docs-attr-desc"><p><span class="text-muted">No docs</span></p>
+</div>
+	<br>
+
+	
+
+
+    
+    
+
+
+<!-- autodoc -->
+<!-- jinja -->
+<!-- static -->
+</div>
+				</div>
+			</div>
+</div>
+
+				<!-- edit-link -->
+                </div>
+            </div>
+			<footer class="docs-footer">
+				<div class="container"><div class="built-with-frappe text-center">
+                    <img class="frappe-bird" src="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/img/frappe-bird-grey.svg">
+                    <h3>By Codrotech Inc.</h3>
+                </div>
+                <div class="text-center">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://github.com/giovanni-codrotech/jobtaskscheduler">
+                            Source</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/giovanni-codrotech/jobtaskscheduler/issues">
+                            Issues</a>
+                        </li>
+                        <li>
+                            <a href="https://giovanni-codrotech.github.io/jobtaskscheduler/license.html">
+                            License</a>
+                        </li>
+                        <li>
+                            <a href="https://discuss.erpnext.com">
+                            Forum</a>
+                        </li>
+                        <li>
+                            <a href="https://frappe.io/apps">
+                            Frappe Apps</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+			</footer>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/js/highlight.pack.js"></script>
+	<script type="text/javascript" src="https://giovanni-codrotech.github.io/jobtaskscheduler/assets/js/docs.js"></script>
+
+	<!-- js should be loaded in body! -->
+	<script>
+        window.docs_base_url = "https://giovanni-codrotech.github.io/jobtaskscheduler";
+    </script>
+
+	<!-- csrf_token --></body>
+</html>
