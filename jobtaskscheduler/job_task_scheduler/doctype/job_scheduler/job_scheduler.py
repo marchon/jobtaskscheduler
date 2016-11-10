@@ -64,9 +64,7 @@ def check_minutes(minute):
 
 
 def check_hours(hour):
-    if hour and 0 <= int(hour) < 24:
-        pass
-    else:
+    if not hour or not hour.isdigit() or not 0 <= int(hour) < 24:
         frappe.throw(_("Hour value must be between 0 and 23"))
 
 
