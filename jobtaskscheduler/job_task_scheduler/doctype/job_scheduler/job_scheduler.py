@@ -31,7 +31,7 @@ class JobScheduler(Document):
             check_hours(self.hour)
             check_minutes(self.minute)
 
-        elif self.run == "Yearly":
+        elif self.run == "Yearly" or self.run == "Monthly":
             check_day_of_month(self.day_of_month, self.month)
             check_hours(self.hour)
             check_minutes(self.minute)
@@ -48,11 +48,11 @@ class JobScheduler(Document):
             # cancel_job(get_redis_conn(), self.job_id)
             self.job_id = set_schedule(get_redis_conn(), self, cron)
 
-            frappe.msgprint(self.run + " Job scheduled " + self.job_id)
+            frappe.msgprint(self.run + " Job scheduled, id = " + self.job_id)
 
         elif self.job_id:
             self.job_id = cancel_job(get_redis_conn(), self.job_id)
-            frappe.msgprint("Job dectivated")
+            frappe.msgprint("Job disabled")
 
     def on_trash(self):
         cancel_job(get_redis_conn(), self.name)
@@ -64,7 +64,9 @@ def check_minutes(minute):
 
 
 def check_hours(hour):
-    if not hour or hour.isdigit() or not 0 <= int(hour) < 24:
+    if hour and 0 <= int(hour) < 24:
+        pass
+    else:
         frappe.throw(_("Hour value must be between 0 and 23"))
 
 
@@ -95,7 +97,6 @@ def get_cron_string(task):
     cron[2] = task.day_of_month
     cron[3] = task.month
     cron[4] = task.day_of_week
-    print cron
 
     if task.run == "Hourly":
         cron[1] = cron[2] = cron[3] = cron[4] = "*"
@@ -160,7 +161,7 @@ def set_schedule(conn, task, cron_string):
         # In which queue the job should be put in
         queue_name=task.queue
     )
-    print " ** scheduled in " + task.queue + " queue, as " + job.get_id() + " at " + cron_string
+    print " ** scheduled in '" + task.queue + "' queue, with id: " + job.get_id() + " at " + cron_string
 
     return job.get_id()
 
