@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 
 import calendar
+import json
 import re
 from calendar import monthrange, timegm
 from datetime import datetime
@@ -114,21 +115,34 @@ def get_cron_string(task):
     return " ".join(cron)
 
 
-def test_job_method():
+def test_job_method(**kwargs):
+
+    print " ********* start jobs execution ".encode("utf-8")
     frappe.init('')
     conn = get_redis_conn()
-    print " ********* jobs executed ".encode("utf-8")
+
+    print "** empty failed queue"
     q = get_failed_queue(connection=conn)
     e = q.empty()
-    print e
 
+    print "** get scheduled jobs"
     scheduler = Scheduler(connection=conn)
-    print scheduler.get_jobs()
+    print "jobs scheduled : {0}".format(scheduler.get_jobs())
+
+    print "** get kwards args"
+    print "kwargs = {0}".format(kwargs)
+    print " ********* end jobs execution ".encode("utf-8")
 
 
 def set_schedule(conn, task, cron_string):
 
     s = Scheduler(connection=conn)
+    kw = json.loads(task.kwargs)
+
+    kw.update({
+        "site": frappe.local.site,
+        "user": frappe.session.user
+    })
 
     job = s.cron(
         id=task.job_id,
@@ -138,15 +152,15 @@ def set_schedule(conn, task, cron_string):
         # Function to be queued
         func=task.method,
         # Arguments passed into function when executed
-        # args=[conn],
+        # args=[task.args],
         # Keyword arguments passed into function when executed
-        # kwargs={'foo': 'bar'},
+        kwargs=kw,
         # Repeat this number of times (None means repeat forever)
         repeat=None,
         # In which queue the job should be put in
         queue_name=task.queue
     )
-    print " ** scheduled in " + task.queue + " as " + job.get_id() + " at " + cron_string
+    print " ** scheduled in " + task.queue + " queue, as " + job.get_id() + " at " + cron_string
 
     return job.get_id()
 

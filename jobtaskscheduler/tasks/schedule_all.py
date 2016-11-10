@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2015, Codrotech Inc. and contributors
 # For license information, please see license.txt
+
 import time
 
 import frappe
@@ -30,7 +31,7 @@ def get_all_tasks_site(site):
         frappe.connect()
         tasks = frappe.get_all("Job Scheduler",
                                filters={"enabled": "1"},
-                               fields=["name", "job_id", "method", "run", "minute", "hour", "day_of_week", "day_of_month", "cron_style", "queue"])
+                               fields=["name", "job_id", "method", "kwargs", "run", "minute", "hour", "day_of_week", "day_of_month", "cron_style", "queue"])
 
         for task in tasks:
             if (task.run == "Cron Style"):
