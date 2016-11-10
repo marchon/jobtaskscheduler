@@ -31,8 +31,18 @@ class JobScheduler(Document):
             check_hours(self.hour)
             check_minutes(self.minute)
 
-        elif self.run == "Yearly" or self.run == "Monthly":
-            check_day_of_month(self.day_of_month, self.month)
+        elif self.run == "Weekly":
+            check_day_of_week(self.day_of_week)
+            check_hours(self.hour)
+            check_minutes(self.minute)
+
+        elif self.run == "Monthly":
+            check_day_of_month(self.run, self.day_of_month)
+            check_hours(self.hour)
+            check_minutes(self.minute)
+
+        elif self.run == "Yearly":
+            check_day_of_month(self.run, self.day_of_month, self.month)
             check_hours(self.hour)
             check_minutes(self.minute)
 
@@ -47,8 +57,8 @@ class JobScheduler(Document):
 
             # cancel_job(get_redis_conn(), self.job_id)
             self.job_id = set_schedule(get_redis_conn(), self, cron)
-
             frappe.msgprint(self.run + " Job scheduled, id = " + self.job_id)
+            self = reset_fields(self)
 
         elif self.job_id:
             self.job_id = cancel_job(get_redis_conn(), self.job_id)
@@ -56,6 +66,42 @@ class JobScheduler(Document):
 
     def on_trash(self):
         cancel_job(get_redis_conn(), self.name)
+
+
+def reset_fields(task):
+    if task.run == "Hourly":
+        task.hour = None
+        task.day_of_month = None
+        task.month = None
+        task.day_of_week = None
+        task.cron_style = None
+
+    elif task.run == "Daily":
+        task.day_of_month = None
+        task.month = None
+        task.day_of_week = None
+        task.cron_style = None
+
+    elif task.run == "Weekly":
+        task.day_of_month = None
+        task.month = None
+        task.cron_style = None
+
+    elif task.run == "Monthly":
+        task.month = None
+        task.day_of_week = None
+        task.cron_style = None
+
+    elif task.run == "Yearly":
+        task.day_of_week = None
+        task.cron_style = None
+
+    elif task.run == "Cron Style":
+        task.hour = None
+        task.minute = None
+        task.day_of_month = None
+        task.month = None
+        task.day_of_week = None
 
 
 def check_minutes(minute):
@@ -68,12 +114,28 @@ def check_hours(hour):
         frappe.throw(_("Hour value must be between 0 and 23"))
 
 
-def check_day_of_month(day, month):
-    m = {v: k for k, v in enumerate(calendar.month_abbr)}
-    last = monthrange(datetime.now().year, m.get(str(month).title()))[1]
-    if int(day) > last:
-        frappe.throw(
-            _("Day value for {0} must be between 1 and {1}").format(month, last))
+def check_day_of_week(day_of_week):
+
+    print day_of_week
+    if not day_of_week or day_of_week is None:
+        frappe.throw(_("Please select a day of the week"))
+
+
+def check_day_of_month(run, day, month=None):
+
+    if run == "Monthly" and not day:
+        frappe.throw(_("Please select a day of the month"))
+
+    elif run == "Yearly":
+        if day and month:
+            m = {v: k for k, v in enumerate(calendar.month_abbr)}
+            last = monthrange(datetime.now().year,
+                              m.get(str(month).title()))[1]
+            if int(day) > last:
+                frappe.throw(
+                    _("Day value for {0} must be between 1 and {1}").format(month, last))
+        else:
+            frappe.throw(_("Please select a day of the week and a month"))
 
 
 def check_cron(cron):
@@ -88,28 +150,15 @@ def check_cron(cron):
 
 
 def get_cron_string(task):
-    cron = "* * * * *".split()
-    cron[0] = task.minute
-    cron[1] = None if task.hour is None else str(
+    cron = [None] * 5
+
+    cron[0] = "*" if task.minute is None else task.minute
+    cron[1] = "*" if task.hour is None else str(
         int(task.hour) - get_utc_time_diff())
-    cron[2] = task.day_of_month
-    cron[3] = task.month
-    cron[4] = task.day_of_week
-
-    if task.run == "Hourly":
-        cron[1] = cron[2] = cron[3] = cron[4] = "*"
-
-    elif task.run == "Daily":
-        cron[2] = cron[3] = cron[4] = "*"
-
-    elif task.run == "Weekly":
-        cron[2] = cron[3] = "*"
-
-    elif task.run == "Monthly":
-        cron[3] = cron[4] = "*"
-
-    elif task.run == "Yearly":
-        cron[4] = "*"
+    cron[2] = "*" if task.day_of_month is None else task.day_of_month
+    cron[3] = "*" if task.month is None else task.month
+    cron[4] = "*" if task.day_of_week is None else task.day_of_week
+    print cron
 
     return " ".join(cron)
 
