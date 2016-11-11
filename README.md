@@ -4,6 +4,10 @@ A very simple frappe scheduler for job tasks
 
 #### 1. It use **rq-scheduler**, it has been added in requirements; in case it will not be installed, should be added manually using:
 
+`$ pip install rq-schedule`
+
+and 
+
 `$ cd frappe-bench/`
 
 `$ source env/bin/activate`
