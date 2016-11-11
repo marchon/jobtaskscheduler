@@ -7,7 +7,7 @@ A very simple frappe scheduler for job tasks
 
 `$ pip install rq-schedule`
 
-and 
+and
 
 `$ cd frappe-bench/`
 
@@ -18,14 +18,11 @@ and
 
 #### 2. Add it to `Procfile` in `frappe-bench` folder:
 
-This runs a scheduler process using the default Redis connection
-
-`rqscheduler: rqscheduler`
-
-If you want to use a different Redis server you could also do:
+It is needed to connect to the Redis queue:
 
 `rqscheduler: rqscheduler -H [host] --port [redis_port]`
 
+you can find info for [host] and [port] in `frappe-bench/config/redis_queue.conf`
 
 #### 3. It is needed to run a script on `bench start` in order to pull all jobs from database and add to `rqscheduler`, so add the following to `Procfile`
 
