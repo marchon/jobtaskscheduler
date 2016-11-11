@@ -18,10 +18,12 @@ and
 
 #### 2. Add it to `Procfile` in `frappe-bench` folder:
 
-`# This runs a scheduler process using the default Redis connection`
+# This runs a scheduler process using the default Redis connection
+
 `rqscheduler: rqscheduler`
 
-`# If you want to use a different Redis server you could also do:`
+# If you want to use a different Redis server you could also do:
+
 `rqscheduler: rqscheduler -H [host] --port [redis_port]`
 
 
