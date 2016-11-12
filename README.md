@@ -1,11 +1,11 @@
 ## Job Task Scheduler
 
-A very simple frappe scheduler for job tasks
+A very simple frappe scheduler for job tasks based on rq-scheduler
 
 
 #### 1. It use **rq-scheduler**, it has been added in requirements; in case it will not be installed, should be added manually using:
 
-`$ pip install rq-schedule`
+`$ pip install rq-scheduler`
 
 and
 
@@ -13,7 +13,7 @@ and
 
 `$ source env/bin/activate`
 
-`$ pip install rq-schedule`
+`$ pip install rq-scheduler`
 
 
 #### 2. Add it to `Procfile` in `frappe-bench` folder:
