@@ -23,85 +23,51 @@ from rq_scheduler import Scheduler
 
 class JobScheduler(Document):
 
+    def on_trash(self):
+        cancel_job(get_redis_conn(), self.job_id)
+
     def validate(self):
+        cron = None
+
         if self.run == "Hourly":
             check_minutes(self.minute)
+            cron = get_cron_string(self)
 
         elif self.run == "Daily":
             check_hours(self.hour)
             check_minutes(self.minute)
+            cron = get_cron_string(self)
 
         elif self.run == "Weekly":
             check_day_of_week(self.day_of_week)
             check_hours(self.hour)
             check_minutes(self.minute)
+            cron = get_cron_string(self)
 
         elif self.run == "Monthly":
             check_day_of_month(self.run, self.day_of_month)
             check_hours(self.hour)
             check_minutes(self.minute)
+            cron = get_cron_string(self)
 
         elif self.run == "Yearly":
             check_day_of_month(self.run, self.day_of_month, self.month)
             check_hours(self.hour)
             check_minutes(self.minute)
+            cron = get_cron_string(self)
 
         elif self.run == "Cron Style":
-            check_cron(str(self.cron_style))
+            check_cron(str(self.cron_string))
+            cron = str(self.cron_string)
 
         if self.enabled:
-            if self.run == "Cron Style":
-                cron = str(self.cron_style)
-            else:
-                cron = get_cron_string(self)
-
             # cancel_job(get_redis_conn(), self.job_id)
             self.job_id = set_schedule(get_redis_conn(), self, cron)
             frappe.msgprint(self.run + " Job scheduled, id = " + self.job_id)
-            self = reset_fields(self)
 
         elif self.job_id:
             self.job_id = cancel_job(get_redis_conn(), self.job_id)
             frappe.msgprint("Job disabled")
-
-    def on_trash(self):
-        cancel_job(get_redis_conn(), self.name)
-
-
-def reset_fields(task):
-    if task.run == "Hourly":
-        task.hour = None
-        task.day_of_month = None
-        task.month = None
-        task.day_of_week = None
-        task.cron_style = None
-
-    elif task.run == "Daily":
-        task.day_of_month = None
-        task.month = None
-        task.day_of_week = None
-        task.cron_style = None
-
-    elif task.run == "Weekly":
-        task.day_of_month = None
-        task.month = None
-        task.cron_style = None
-
-    elif task.run == "Monthly":
-        task.month = None
-        task.day_of_week = None
-        task.cron_style = None
-
-    elif task.run == "Yearly":
-        task.day_of_week = None
-        task.cron_style = None
-
-    elif task.run == "Cron Style":
-        task.hour = None
-        task.minute = None
-        task.day_of_month = None
-        task.month = None
-        task.day_of_week = None
 
 
 def check_minutes(minute):
@@ -158,7 +124,6 @@ def get_cron_string(task):
     cron[2] = "*" if task.day_of_month is None else task.day_of_month
     cron[3] = "*" if task.month is None else task.month
     cron[4] = "*" if task.day_of_week is None else task.day_of_week
-    print cron
 
     return " ".join(cron)
 
@@ -219,7 +184,7 @@ def cancel_job(conn, job_id):
 
     if job_id in scheduler:
         scheduler.cancel(job_id)
-        print " Job: " + job_id + " deleded"
+        print " Job: " + job_id + " deleted"
 
     else:
         print " Job: " + str(job_id) + " not scheduled"
