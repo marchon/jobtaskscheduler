@@ -82,7 +82,6 @@ def check_hours(hour):
 
 def check_day_of_week(day_of_week):
 
-    print day_of_week
     if not day_of_week or day_of_week is None:
         frappe.throw(_("Please select a day of the week"))
 
