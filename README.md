@@ -32,6 +32,6 @@ you can find info for [host] and [port] in `frappe-bench/config/redis_queue.conf
 
 GPL
 
-## This app is not needed anymore as frappe now have the ability to schedule cron jobs, see: 
+#### This app is not needed anymore as frappe now have the ability to schedule cron jobs, see: 
 
-https://github.com/frappe//frappe/docs/user/en/tutorial/task-runner.md
+https://github.com/frappe/frappe/blob/299ab6198a76eec3267f6e2b0eb1e7fd06ea46d0/frappe/docs/user/en/tutorial/task-runner.md
